@@ -27,8 +27,8 @@ class WebVersion(models.Model):
 class Mail(models.Model):
     """ 留言 """
     title = models.CharField(max_length=32, verbose_name="标题")
-    content = models.CharField(max_length=1024, verbose_name="详细描述")
-    ip = models.CharField(max_length=1024, verbose_name="IP")
+    content = models.TextField(max_length=1024, verbose_name="详细描述")
+    ip = models.TextField(max_length=1024, verbose_name="IP")
 
     def __str__(self):
         return self.title
