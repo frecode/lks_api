@@ -67,7 +67,7 @@ def send_template_msg(data):
                     "color": "#173177"
                 },
                 "ip": {
-                    "value": data["ip"],
+                    "value": 'null',
                     "color": "#666"
                 },
             }
