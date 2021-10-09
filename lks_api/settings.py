@@ -116,8 +116,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/root/static/lks_api_static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# ############# 微信 ##############
+USER_ID = "oZXVR6h9DPBM4FQewwLIFEzhDbUY"
+WECHAT_CONFIG = {
+    'app_id': 'wx1b754bff21cf8f0e',
+    'appsecret': 'd1144998f02d0d6537025075fa85432d',
+    'redirect_uri': 'https://api.lks.helloxjn.com:8004/callback/',
+    'template_id': "-94q8_KXa9qCk3bk7hM4jpJzSw1MKo_yavl5u6H1j-8"
+}

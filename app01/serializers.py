@@ -1,9 +1,10 @@
 from rest_framework import serializers
-from .models import Web, WebVersion
+from .models import Web, WebVersion, Mail
 
 
 class WebSerializer(serializers.ModelSerializer):
     """ 网站数据推荐 """
+
     class Meta:
         model = Web
         fields = '__all__'
@@ -20,6 +21,7 @@ class WebSerializer(serializers.ModelSerializer):
 
 class WebVersionSerializer(serializers.ModelSerializer):
     """ 版本号 """
+
     class Meta:
         model = WebVersion
         fields = '__all__'
@@ -27,3 +29,16 @@ class WebVersionSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         version = validated_data['version']
         return WebVersion.objects.create(version=version)
+
+
+class MailSerializer(serializers.ModelSerializer):
+    """ 留言 """
+
+    class Meta:
+        model = Mail
+        fields = "__all__"
+
+    def create(self, validated_data):
+        title = validated_data["title"]
+        content = validated_data["content"]
+        return Mail.objects.create(title=title, content=content)
