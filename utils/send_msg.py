@@ -29,8 +29,6 @@ def send_template_msg(data):
     :param data:
     :return:
     """
-    name_ = "标题："
-    content_ = "详细描述："
     access_token = get_access_token()
     res = requests.post(
         url="https://api.weixin.qq.com/cgi-bin/message/template/send",
@@ -42,15 +40,15 @@ def send_template_msg(data):
             "template_id": WECHAT_CONFIG['template_id'],
             "data": {
                 "name_": {
-                    "value": name_,
+                    "value": "标题：",
                     "color": "#666"
                 },
                 "content_": {
-                    "value": content_,
+                    "value": "详细描述：",
                     "color": "#666"
                 },
                 "ip_": {
-                    "value": name_,
+                    "value": "标题：",
                     "color": "#666"
                 },
                 "time_": {
@@ -69,7 +67,7 @@ def send_template_msg(data):
                     "color": "#173177"
                 },
                 "ip": {
-                    "value": 'null',
+                    "value": data["ip"],
                     "color": "#666"
                 },
             }

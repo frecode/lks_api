@@ -41,4 +41,5 @@ class MailSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         title = validated_data["title"]
         content = validated_data["content"]
-        return Mail.objects.create(title=title, content=content)
+        ip = validated_data["ip"]
+        return Mail.objects.create(title=title, content=content, ip=ip)
