@@ -2,11 +2,11 @@ import json
 from django.shortcuts import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import WebSerializer, WebVersionSerializer, MailSerializer
-from .models import Web, WebVersion, Mail
+from .serializers import WebSerializer, WebVersionSerializer, MailSerializer, WebReceiveSerializer
+from .models import Web, WebVersion
 
 from utils.base_response import BaseResponse
-from utils.send_msg import send_template_msg
+from utils.send_msg import send_template_msg, send_template_msg_web_receive
 
 
 class ApiWeb(APIView):
@@ -53,6 +53,24 @@ class TestMail(APIView):
             ser_obj.save()
             res.data = {"已发送": ser_obj.data["title"]}
             send_template_msg(ser_obj.data)  # 微信通知
+        else:
+            res.code = 1020
+            res.error = ser_obj.errors
+        return Response(res.dict)
+
+
+class WebReceiveMail(APIView):
+    """ 网站推荐接口 """
+
+    def post(self, request):
+        """ 用户发送留言 """
+        res = BaseResponse()
+        # 用序列化器做校验
+        ser_obj = WebReceiveSerializer(data=request.data)
+        if ser_obj.is_valid():
+            ser_obj.save()
+            res.data = {"已发送": ser_obj.data["href"]}
+            send_template_msg_web_receive(ser_obj.data)  # 微信通知
         else:
             res.code = 1020
             res.error = ser_obj.errors

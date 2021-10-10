@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Web, WebVersion, Mail
+from .models import Web, WebVersion, Mail, WebReceive
 
 
 class WebSerializer(serializers.ModelSerializer):
@@ -42,3 +42,16 @@ class MailSerializer(serializers.ModelSerializer):
         title = validated_data["title"]
         content = validated_data["content"]
         return Mail.objects.create(title=title, content=content)
+
+
+class WebReceiveSerializer(serializers.ModelSerializer):
+    """ 留言 """
+
+    class Meta:
+        model = WebReceive
+        fields = "__all__"
+
+    def create(self, validated_data):
+        href = validated_data["href"]
+        content = validated_data["content"]
+        return WebReceive.objects.create(href=href, content=content)

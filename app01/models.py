@@ -1,6 +1,6 @@
 from django.db import models
 
-__all__ = ['Web', 'WebVersion', 'Mail']
+__all__ = ['Web', 'WebVersion', 'Mail', 'WebReceive']
 
 
 class Web(models.Model):
@@ -31,3 +31,12 @@ class Mail(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class WebReceive(models.Model):
+    """ 收到的网站链接 """
+    href = models.CharField(max_length=256, verbose_name="网站链接")
+    content = models.TextField(max_length=256, verbose_name="网站描述")
+
+    def __str__(self):
+        return self.href
