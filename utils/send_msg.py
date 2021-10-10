@@ -96,15 +96,15 @@ def send_template_msg_web_receive(data):
             "template_id": WECHAT_CONFIG['template_id'],
             "data": {
                 "name_": {
-                    "value": "网站链接：",
+                    "value": "链接：",
                     "color": "#666"
                 },
                 "content_": {
-                    "value": "网站描述：",
+                    "value": "网站简介：",
                     "color": "#666"
                 },
                 "ip_": {
-                    "value": "网站链接：",
+                    "value": "链接：",
                     "color": "#666"
                 },
                 "time_": {
