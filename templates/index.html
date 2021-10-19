@@ -18,7 +18,7 @@
         }
 
         body {
-            color: #999999;
+            color: #777777;
             font-size: 14px;
             -webkit-font-smoothing: antialiased;
             font-family: "Microsoft Yahei Light", "Microsoft Yahei", PingFangSC-Regular, Helvetica, sans-serif;
@@ -41,8 +41,10 @@
 
         a {
             color: blue;
+            font-weight: 600;
             text-decoration: none !important;
             outline: none !important;
+            letter-spacing: 0.03em;
         }
 
         a:hover {
@@ -55,6 +57,11 @@
             -ms-transition: all .2s ease-in-out;
             -o-transition: all .2s ease-in-out;
             transition: all .2s ease-in-out;
+        }
+
+        .web-title {
+            color: #121212;
+            font-weight: 600;
         }
 
         .web-item-box {
@@ -104,7 +111,7 @@
                     {% if 'http' in web.href %}
                         <a href="{{ web.href }}" rel="nofollow noreferrer" target="_blank">{{ web.href }}</a>
                     {% else %}
-                        <span style="color: #121212">{{ web.href }}</span>
+                        <span class="web-title">{{ web.href }}</span>
                     {% endif %}
                     <hr>
                     <span>{{ web.content|linebreaks }}</span>
