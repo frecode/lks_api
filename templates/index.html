@@ -109,7 +109,7 @@
     {% for web in web_list %}
         <div class="web-item">
             <div class="web-item-box">
-                <a href="{{ web.href }}" target="_blank">{{ web.href }}</a>
+                <a href="{{ web.href }}" rel="nofollow noreferrer" target="_blank">{{ web.href }}</a>
                 <hr>
                 <span>{{ web.content|linebreaks }}</span>
             </div>
