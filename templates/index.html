@@ -2,7 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#E4EBF8">
+    <title>LKs - 良心到难以置信的网站推荐</title>
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/static/apple-touch-icon.jpg">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <style>
         :root {
             --white: #FFFFFF;
@@ -23,6 +30,7 @@
         h1 {
             text-align: center;
             color: #333333;
+            margin: 70px 0 60px;
         }
 
         hr {
@@ -49,54 +57,37 @@
             transition: all .2s ease-in-out;
         }
 
-        .masonry {
-            -moz-column-count: 3; /* 火狐 */
-            -webkit-column-count: 3; /* Safari 和 谷歌 */
-            column-count: 3;
-            -moz-column-gap: 1em;
-            -webkit-column-gap: 1em;
-            column-gap: 1em;
-            width: 80%;
-            margin: 1em auto;
-        }
-
-        .web-item {
-            padding: 0.5em;
-            margin-bottom: 1em;
-            -moz-page-break-inside: avoid;
-            -webkit-column-break-inside: avoid;
-            break-inside: avoid;
-            background: var(--greyLight-1);
-        }
-
         .web-item-box {
             padding: 1em;
             border-radius: 0.5em;
             box-shadow: .2rem .2rem .4rem var(--greyLight-2), -.2rem -.2rem .4rem var(--white);
         }
 
+        .row {
+            margin-bottom: 100px;
+        }
+
+        .col-md-4 {
+            margin: 30px 0;
+        }
+
         /* 移动端响应式布局 */
-        @media (min-width: 992px) and (max-width: 1219px) {
-            .masonry {
-                column-count: 2;
-            }
-        }
-
-        @media (min-width: 768px) and (max-width: 991px) {
-            .masonry {
-                column-count: 1;
-            }
-        }
-
         @media (max-width: 767px) {
-            .masonry {
-                column-count: 1;
+            h1 {
+                font-size: 33px;
+            }
+            .col-md-4 {
+                margin: 20px 0;
             }
         }
 
         @media only screen and (min-width: 280px) and (max-width: 599px) {
-            .masonry {
-                column-count: 1;
+            h1 {
+                font-size: 24px;
+                margin: 33px 0 25px;
+            }
+            .col-md-4 {
+                margin: 15px 0;
             }
         }
 
@@ -105,16 +96,23 @@
 <body>
 
 <h1>{{ title }}</h1>
-<div class="masonry">
-    {% for web in web_list %}
-        <div class="web-item">
-            <div class="web-item-box">
-                <a href="{{ web.href }}" rel="nofollow noreferrer" target="_blank">{{ web.href }}</a>
-                <hr>
-                <span>{{ web.content|linebreaks }}</span>
+<div class="container">
+    <div class="row">
+        {% for web in web_list %}
+            <div class="col-md-4">
+                <div class="web-item-box">
+                    {% if 'http' in web.href %}
+                        <a href="{{ web.href }}" rel="nofollow noreferrer" target="_blank">{{ web.href }}</a>
+                    {% else %}
+                        <span style="color: #121212">{{ web.href }}</span>
+                    {% endif %}
+                    <hr>
+                    <span>{{ web.content|linebreaks }}</span>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
+
 </div>
 </body>
 </html>
