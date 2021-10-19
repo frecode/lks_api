@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        :root {
+            --white: #FFFFFF;
+            --greyLight-1: #E4EBF8;
+            --greyLight-2: #c8d0e7;
+        }
+
+        body {
+            color: #999999;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+            font-family: "Microsoft Yahei Light", "Microsoft Yahei", PingFangSC-Regular, Helvetica, sans-serif;
+            line-height: 1.80857;
+            background-color: var(--greyLight-1);
+            letter-spacing: 0.1em;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        hr {
+            border: 0;
+            background-color: darkgray;
+            height: 1px;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none !important;
+            outline: none !important;
+        }
+
+        a:hover {
+            color: darkorange;
+        }
+
+        a, a:hover {
+            -webkit-transition: all .2s ease-in-out;
+            -moz-transition: all .2s ease-in-out;
+            -ms-transition: all .2s ease-in-out;
+            -o-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+
+        .masonry {
+            -moz-column-count: 3; /* 火狐 */
+            -webkit-column-count: 3; /* Safari 和 谷歌 */
+            column-count: 3;
+            -moz-column-gap: 1em;
+            -webkit-column-gap: 1em;
+            column-gap: 1em;
+            width: 80%;
+            margin: 1em auto;
+        }
+
+        .web-item {
+            padding: 0.5em;
+            margin-bottom: 1em;
+            -moz-page-break-inside: avoid;
+            -webkit-column-break-inside: avoid;
+            break-inside: avoid;
+            background: var(--greyLight-1);
+        }
+
+        .web-item-box {
+            padding: 1em;
+            border-radius: 0.5em;
+            box-shadow: .2rem .2rem .4rem var(--greyLight-2), -.2rem -.2rem .4rem var(--white);
+        }
+
+        /* 移动端响应式布局 */
+        @media (min-width: 992px) and (max-width: 1219px) {
+            .masonry {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .masonry {
+                column-count: 1;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .masonry {
+                column-count: 1;
+            }
+        }
+
+        @media only screen and (min-width: 280px) and (max-width: 599px) {
+            .masonry {
+                column-count: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>{{ title }}</h1>
+<div class="masonry">
+    {% for web in web_list %}
+        <div class="web-item">
+            <div class="web-item-box">
+                <a href="{{ web.href }}" target="_blank">{{ web.href }}</a>
+                <hr>
+                <span>{{ web.content|linebreaks }}</span>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>

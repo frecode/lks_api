@@ -1,6 +1,6 @@
 from django.db import models
 
-__all__ = ['Web', 'WebVersion', 'Mail', 'WebReceive']
+__all__ = ['Web', 'WebVersion', 'Mail', 'WebReceive', 'WebInfo']
 
 
 class Web(models.Model):
@@ -40,3 +40,10 @@ class WebReceive(models.Model):
 
     def __str__(self):
         return self.href
+
+
+class WebInfo(models.Model):
+    title = models.CharField(max_length=64, verbose_name="接口标题")
+
+    def __str__(self):
+        return self.title

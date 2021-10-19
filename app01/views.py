@@ -1,9 +1,9 @@
 import json
-from django.shortcuts import HttpResponse
+from django.shortcuts import HttpResponse, render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import WebSerializer, WebVersionSerializer, MailSerializer, WebReceiveSerializer
-from .models import Web, WebVersion
+from .models import Web, WebVersion, WebReceive,WebInfo
 
 from utils.base_response import BaseResponse
 from utils.send_msg import send_template_msg, send_template_msg_web_receive
@@ -86,3 +86,9 @@ def init_web(request):
                            kind_name=web['kind_name'], star=web['star'])
         print('网站写入成功「%s」' % web['title'])
     return HttpResponse('数据初始化成功')
+
+
+def web_view(request):
+    web_list = WebReceive.objects.all()
+    title = WebInfo.objects.first().title
+    return render(request, 'index.html', locals())

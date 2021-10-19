@@ -15,13 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-from app01.views import init_web
+from app01.views import init_web, web_view
 from django.views import static
 from lks_api.settings import STATIC_ROOT
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('app01.urls')),
+    path('', web_view),
+    path('web_view/', web_view),
     # path('init_web/', init_web),
     re_path('^static/(?P<path>.*)$', static.serve, {'document_root': STATIC_ROOT}, name='static'),
 ]
