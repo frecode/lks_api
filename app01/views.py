@@ -90,5 +90,7 @@ def init_web(request):
 
 def web_view(request):
     web_list = WebReceive.objects.all()
-    title = WebInfo.objects.first().title
+    web_info_obj = WebInfo.objects.first()
+    web_title = web_info_obj.web_title
+    title = web_info_obj.title
     return render(request, 'index.html', locals())

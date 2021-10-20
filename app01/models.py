@@ -43,7 +43,8 @@ class WebReceive(models.Model):
 
 
 class WebInfo(models.Model):
-    title = models.CharField(max_length=64, verbose_name="接口标题")
+    web_title = models.CharField(max_length=64, verbose_name="网站标题")
+    title = models.CharField(max_length=64, verbose_name="页面标题")
 
     def __str__(self):
         return self.title

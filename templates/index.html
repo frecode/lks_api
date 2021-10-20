@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#E4EBF8">
-    <title>LKs - 良心到难以置信的网站推荐</title>
+    <title>{{ web_title }}</title>
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/static/apple-touch-icon.jpg">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
@@ -71,11 +71,30 @@
         }
 
         .row {
-            margin-bottom: 100px;
+            margin-bottom: 50px;
         }
 
         .col-md-4 {
             margin: 30px 0;
+        }
+
+        .footer-links {
+            padding: 0;
+            margin: 0;
+            color: #999999;
+            font-family: SF Pro SC, SF Pro Text, SF Pro Display, SF Pro Icons, PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
+        }
+        .footer-links a {
+            color: #1f1f1f;
+            font-weight: normal;
+            letter-spacing: .1em;
+        }
+
+        .copyrights {
+            padding: 25px 0 !important;
+            box-shadow: -0.1rem -2px 0 #f1f5fc;
+            width: 100%;
+            bottom: 0;
         }
 
         /* 移动端响应式布局 */
@@ -89,7 +108,7 @@
             }
 
             .row {
-                margin-bottom: 50px;
+                margin-bottom: 30px;
             }
         }
 
@@ -129,7 +148,13 @@
             </div>
         {% endfor %}
     </div>
-
+</div>
+<div class="copyrights">
+    <div class="container">
+        <p class="footer-links text-center">Copyright © 2021 <a href="https://github.com/xiangjianan/"
+                                                                rel="nofollow noreferrer" target="_target">xiangjianan</a>
+        </p>
+    </div>
 </div>
 </body>
 </html>
