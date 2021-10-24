@@ -53,6 +53,8 @@ class WebReceiveSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         href = validated_data["href"]
-        href = href if href.startswith('http') else 'http://' + href
+        # 判断标题类型
+        if '.' in href:
+            href = href if href.startswith('http') else 'http://' + href
         content = validated_data["content"]
         return WebReceive.objects.create(href=href, content=content)
