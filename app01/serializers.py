@@ -1,3 +1,4 @@
+import re
 from rest_framework import serializers
 from .models import Web, WebVersion, Mail, WebReceive
 
@@ -54,7 +55,7 @@ class WebReceiveSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         href = validated_data["href"]
         # 判断标题类型
-        if '.' in href:
+        if re.findall(r'^[a-zA-Z0-9]*\.', href):
             href = href if href.startswith('http') else 'http://' + href
         content = validated_data["content"]
         return WebReceive.objects.create(href=href, content=content)
